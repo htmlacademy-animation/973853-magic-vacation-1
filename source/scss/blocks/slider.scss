@@ -1,3 +1,15 @@
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .slider {
   position: relative;
   flex-grow: 1;
@@ -122,6 +134,14 @@
     min-height: 14rem;
     font-size: 1.4rem;
     line-height: 1.5rem;
+  }
+
+  .swiper-slide-active & {
+    animation: fadeInLeft 0.7s ease-out;
+  }
+
+  .swiper-slide-next & {
+    animation: fadeInLeft 0.7s ease-out 0.3s;
   }
 }
 
