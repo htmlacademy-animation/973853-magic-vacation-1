@@ -1,11 +1,18 @@
 .social-block {
   position: relative;
+  transform: scale(0);
+  transition: transform 0.6s cubic-bezier(.19,1.58,.6,.6);
+  transition-delay: 0.7s;
 
   &:hover {
     .social-block__list {
       opacity: 1;
       pointer-events: auto;
     }
+  }
+
+  .body__loaded & {
+    transform: scale(1);
   }
 }
 
