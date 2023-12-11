@@ -365,3 +365,19 @@
 .screen--rules {
   background-color: $c-dark;
 }
+
+.screen--fill {
+  position: fixed;
+  height: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $c-dark;
+  z-index: 2;
+
+  &.active {
+    height: 100%;
+    z-index: 1;
+    transition: height 0.4s;
+  }
+}
