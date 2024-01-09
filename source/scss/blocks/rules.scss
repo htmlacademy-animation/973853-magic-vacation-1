@@ -159,6 +159,14 @@
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
+    transform: scale(0);
+
+    .body__loaded & {
+      animation-name: rulesBulletShow;
+      animation-duration: 0.3s;
+      animation-timing-function: cubic-bezier(0.3, 0.5, 0.8, 1.5);
+      animation-fill-mode: forwards;
+    }
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -179,9 +187,38 @@
 
   p {
     margin: 0;
+    opacity: 0;
+    transform: translateX(50px);
+
+    .body__loaded & {
+      animation-name: rulesListTextShow;
+      animation-duration: 0.3s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    }
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
+    }
+  }
+
+  .body__loaded & {
+    &:nth-child(2) {
+      &::before, p {
+        animation-delay: 0.1s;
+      }
+    }
+
+    &:nth-child(3) {
+      &::before, p {
+        animation-delay: 0.2s;
+      }
+    }
+
+    &:nth-child(4) {
+      &::before, p {
+        animation-delay: 0.3s;
+      }
     }
   }
 }
@@ -190,6 +227,25 @@
   position: absolute;
   bottom: 6rem;
   right: 5.6rem;
+  color: transparent;
+
+  &::before {
+    opacity: 0;
+  }
+
+  .body__loaded & {
+    animation-name: rulesBtnTextShow;
+    animation-duration: 0.3s;
+    animation-delay: 0.9s;
+    animation-fill-mode: forwards;
+
+    &::before {
+      animation-name: rulesBtnShow;
+      animation-duration: 0.3s;
+      animation-delay: 0.8s;
+      animation-fill-mode: forwards;
+    }
+  }
 
   @media (min-width: $stop-scaling) {
     bottom: 60px;
@@ -209,5 +265,59 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     bottom: 2rem;
     right: 1.5rem;
+  }
+}
+
+@keyframes rulesBulletShow {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes rulesListTextShow {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rulesBtnShow {
+  from {
+    width: 6rem;
+    left: calc(100% - 3rem);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    width: 100%;
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes rulesBtnTextShow {
+  0% {
+    color: transparent;
+  }
+
+  50% {
+    color: transparent;
+  }
+
+  100% {
+    color: $c-purple;
   }
 }
